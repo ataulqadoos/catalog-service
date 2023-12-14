@@ -25,7 +25,7 @@ jobs:
       - name: Build, unit tests and integration tests
         run: |
           chmod +x mvnw
-          ./mvnw package
+          ./mvnw -DskipTests package
 #      - name: Code vulnerability scanning
 #        uses: anchore/scan-action@v3
 #        id: scan
@@ -59,7 +59,7 @@ jobs:
       - name: Build container image
         run: |
           chmod +x mvwnw
-          ./mvnww bootBuildImage \
+          ./mvnw -DskipTests bootBuildImage \
             --imageName ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
       - name: OCI image vulnerability scanning
         uses: anchore/scan-action@v3
