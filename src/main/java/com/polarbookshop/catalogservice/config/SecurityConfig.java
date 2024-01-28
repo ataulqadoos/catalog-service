@@ -19,8 +19,8 @@ public class SecurityConfig {
         return httpSecurity
                 .authorizeHttpRequests(authorize ->
                         authorize
-                                .mvcMatchers(HttpMethod.GET, "/", "/books/**")
-                                .permitAll()
+                                .mvcMatchers("/actuator/**").permitAll()
+                                .mvcMatchers(HttpMethod.GET, "/", "/books/**").permitAll()
                                 .anyRequest()
                                 .hasRole("employee"))
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
