@@ -43,13 +43,17 @@ management:
   endpoints:
     web:
       exposure:
-        include: refresh, health
+        include: refresh, health, prometheus
   endpoint:
     health:
       show-components: always
       show-details: always
       probes:
         enabled: true
+  metrics:
+    tags:
+      application: ${spring.application.name}
+
 
 polar:
   greeting: Welcome to the local book catalog!
