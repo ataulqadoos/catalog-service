@@ -39,11 +39,17 @@ spring:
       connection-timeout: 2000 #ms
       maximum-pool-size: 5
 
+info:
+  system: Polar Bookshop
+
 management:
   endpoints:
     web:
       exposure:
-        include: refresh, health, prometheus
+        include: refresh, health, prometheus, flyway, info
+  info:
+    env:
+      enabled: true
   endpoint:
     health:
       show-components: always
@@ -54,6 +60,9 @@ management:
     tags:
       application: ${spring.application.name}
 
+logging:
+  pattern:
+    level: "%5p [${spring.application.name},%X{trace_id},%X{span_id}]"
 
 polar:
   greeting: Welcome to the local book catalog!
