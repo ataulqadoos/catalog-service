@@ -14,7 +14,7 @@ spring:
   lifecycle:
     timeout-per-shutdown-phase: 15s
   config:
-    import: "optional:configserver:"
+    import: ""
   security:
     oauth2:
       resourceserver:
@@ -31,6 +31,7 @@ spring:
         initial-interval: 1000 # 1s
         max-interval: 2000 # 2s
         multiplier: 1.1
+      enabled: false
   datasource:
     username: user
     password: password
